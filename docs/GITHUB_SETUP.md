@@ -10,7 +10,7 @@
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin <your-repo-url>
+   git remote add origin https://github.com/garettwoolley/reading-habit-tracker.git
    git push -u origin main
    ```
 
