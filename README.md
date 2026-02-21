@@ -87,7 +87,7 @@ Install these before starting:
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/garettwoolley/reading-habit-tracker.git
 cd reading-habit-tracker
 ```
 
