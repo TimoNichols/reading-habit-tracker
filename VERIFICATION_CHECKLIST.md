@@ -1,33 +1,36 @@
 # Verification Checklist
 
-Use this to verify someone can clone and set up the repository successfully.
+Use this checklist to verify the repository can be cloned and set up successfully.
 
-## ✅ Pre-Flight Check (Before Testing)
+## Pre-Flight Check
 
 - [ ] All files are committed and pushed to GitHub
-- [ ] Repository is public (or team members have access)
-- [ ] README.md has correct repository URL
+- [ ] Repository is accessible to team members
+- [ ] README.md contains correct repository URL
 
-## 📋 Setup Test (Have someone else test this)
-
-Ask a team member (or test yourself in a fresh folder) to:
+## Setup Verification
 
 ### 1. Clone Repository
+
 ```bash
 git clone https://github.com/garettwoolley/reading-habit-tracker.git
 cd reading-habit-tracker
 ```
+
 - [ ] Repository clones successfully
 - [ ] All folders are present (frontend/, backend/, db/)
 
 ### 2. Install Dependencies
+
 ```bash
 npm run install:all
 ```
+
 - [ ] No errors during installation
 - [ ] node_modules folders are created in root, frontend, and backend
 
 ### 3. Database Setup
+
 ```bash
 # Create database
 psql -U postgres
@@ -40,58 +43,62 @@ psql -U postgres -d reading_habit_tracker -f db/schema.sql
 # Run seed
 psql -U postgres -d reading_habit_tracker -f db/seed.sql
 ```
+
 - [ ] Database is created
 - [ ] Tables are created (no errors)
 - [ ] Sample data is inserted
 
 ### 4. Environment Setup
-```bash
-# Copy example file
-cp .env.example backend/.env
 
-# Edit backend/.env with actual database credentials
+Create `backend/.env` file with:
+
+```env
+DATABASE_URL=postgresql://username:password@localhost:5432/reading_habit_tracker
+PORT=3001
 ```
-- [ ] .env.example file exists
-- [ ] Can create backend/.env file
-- [ ] Can edit with database credentials
+
+- [ ] backend/.env file is created
+- [ ] Database credentials are configured correctly
 
 ### 5. Run Application
+
 ```bash
 npm run dev
 ```
+
 - [ ] Backend starts on port 3001
 - [ ] Frontend starts on port 5173
-- [ ] Can open http://localhost:5173 in browser
-- [ ] App loads without errors
+- [ ] Application opens at http://localhost:5173
+- [ ] No errors in browser console
 
-### 6. Test Basic Functionality
+### 6. Basic Functionality Test
+
 - [ ] Can navigate between pages
-- [ ] Can see home page with stats
-- [ ] Can access Log Reading page
-- [ ] Form loads correctly
+- [ ] Home page displays correctly
+- [ ] Log Reading page loads
+- [ ] Form displays correctly
 
-## 🔍 Files to Verify Are Present
+## Required Files
 
-Check these files exist in the repository:
+Verify these files exist in the repository:
 
-- [ ] `db/schema.sql` - Creates database tables
+- [ ] `db/schema.sql` - Database table definitions
 - [ ] `db/seed.sql` - Sample data
 - [ ] `backend/server.js` - Express server
 - [ ] `backend/routes/readingLogs.js` - API routes
-- [ ] `backend/controllers/readingLogsController.js` - Controllers
-- [ ] `frontend/src/App.jsx` - Main React app
+- [ ] `backend/controllers/readingLogsController.js` - Request handlers
+- [ ] `frontend/src/App.jsx` - Main React component
 - [ ] `frontend/src/context/AppContext.jsx` - State management
-- [ ] `package.json` files in root, frontend, and backend
-- [ ] `README.md` - Documentation
-- [ ] `.env.example` - Environment variable template
+- [ ] `package.json` in root, frontend, and backend directories
+- [ ] `README.md` - Project documentation
 
-## 🐛 Common Issues to Check
+## Common Issues
 
-- [ ] No missing dependencies in package.json
-- [ ] No hardcoded paths that won't work on other machines
-- [ ] Database scripts work with standard PostgreSQL setup
-- [ ] Ports 3001 and 5173 are available (or configurable)
+- [ ] All dependencies listed in package.json files
+- [ ] No hardcoded file paths
+- [ ] Database scripts compatible with standard PostgreSQL
+- [ ] Ports 3001 and 5173 are available
 
-## ✅ Success Criteria
+## Success Criteria
 
-If all checks pass, the repository is ready for team use!
+All checks completed successfully indicates the repository is ready for team use.
